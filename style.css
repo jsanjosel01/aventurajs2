@@ -3,13 +3,153 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Variables, colores */
+:root {
+  --primary: #5e400f;
+  --secondary: #daba86;
+  --accent: #ee9106;
+  --danger: #d04026;
+  --light: #f5e8d2;
+  --dark: #2b1c08;
+}
+
+/* --------------- ESTRUCTURA BASE --------------- */
+body {
+    background: var(--dark);
+    color: var(--light);
+    font-family: "MedievalSharp", cursive;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    background-color: var(--secondary);
+    height: 80px;
+    padding: 20px;
 
 }
-:root{
-    --dark-color: rgb(10, 10, 10);
-    --light-color: rgb(220, 231, 227);
-    --primary-color:rgb(76, 32, 177);
+
+main {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    width: 100%;
 }
+
+#game-container {
+    width: 95%;
+    max-width: 800px;
+    margin: 32px auto;
+    background: var(--primary);
+    padding: 24px;
+    border-radius: 16px;
+    border: 3px solid var(--secondary);
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    /* cursor: crosshair; */
+}
+
+/* --------------- GESTIÓN DE ESCENAS --------------- */
+/*cambiar las escenas*/
+.game-scene {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.active-scene {
+    display: flex;
+}
+
+.hidden-scene { display: none; }
+
+
+
+
+/* --------------- BOTONES --------------- */
+
+#btn-empezar {
+    font-family: "MedievalSharp", cursive;
+    font-weight: bold;
+    padding: 8px 10px;
+    color: var(--dark);
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px auto;
+    border: 2px solid var(--dark);
+    transition: 0.2s;
+}
+
+#btn-empezar {
+    background: var(--accent);
+    font-size: 1.2rem;
+    display: block;
+    min-width: 100px;
+}
+
+#btn-empezar:hover:not(:disabled) {
+    background: #ffba53;
+    transform: scale(1.05);
+}
+
+#btn-empezar:disabled {
+    background: #666;
+    color: #999;
+    cursor: not-allowed;
+    border-color: #444;
+}
+
+
+
+/* --------------- FOOTER --------------- */
+#footer {
+    color: var(--light); 
+    padding: 20px; 
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* --------------- INVENTARIO --------------- */
+#inventory-container {
+    background-color: var(--secondary);
+    display: flex;
+    padding: 8px;
+    margin: 5px;
+    gap: 4px;
+    border-radius: 10px;
+ 
+}
+
+.item {
+    width: 60px;
+    height: 60px;
+    border: 2px #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.item:hover {
+    transform: scale(1.2); 
+    box-shadow: var(--shadow-hover);
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+}
+
+.item img{
+    width: 100%;
+  }
+
+
 
 
 
