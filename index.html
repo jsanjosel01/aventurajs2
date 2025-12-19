@@ -8,7 +8,73 @@
     <title>aventurajs2</title>
 </head>
 <body>
-   <h1>aventurajs2</h1>
+    <header>
+    <h1 id="title">Aventura en el Reino de JS</h1>
+    </header>
+
+  <!-- Panel del juego -->
+   <main>
+    
+    <!-- Formulario -->
+        <div class="scene" id="escena-formulario">
+
+            <form action="form">
+                <div class="inputContainer">
+                    <label>Nombre:</label>
+                    <input id="nombre-jugador" type="text">
+                    <small></small>
+                </div>
+
+                <div class="inputContainer">
+                    <label>Ataque:</label>
+                    <input id="ataque" type="number" step="1" min="0" placeholder="0" value="0">
+                    <small></small>
+                </div>
+
+                <div class="inputContainer">
+                    <label>Defensa:</label>
+                    <input id="defensa" type="number" step="1" min="0" placeholder="0" value="0">
+                    <small></small>
+                </div>
+
+                <div class="inputContainer">
+                    <label>Vida:</label>
+                    <input id="vida" type="number" step="1" min="100" placeholder="100" value="100">
+                    <small></small>
+                </div>
+
+                <button id="empezar">Crear jugador</button>
+            </form>
+
+        </main>
+
+    <!-- Pie con Inventario -->
+        <footer id="footer">
+
+            <div id="inventory-container">
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            <div class="item">
+                <img src="" alt="">
+            </div>
+            </div>
+            
+            <p> &copy; 2025 Aventura en el reino de dragones</p>
+        </footer>
+
 </body>
 </html>
 
