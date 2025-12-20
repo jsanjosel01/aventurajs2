@@ -25,25 +25,47 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+
+    height: 100vh;
+    overflow: hidden;
 }
 
-h1{
-    text-align: center;
-    background-color: var(--secondary);
-    height: 80px;
-    padding: 20px;
-
+header {
+    height: 10vh; /* Requisito 10% */
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--secondary);
+    box-sizing: border-box;
 }
+
+
 
 main {
-    flex-grow: 1; 
+    height: 70vh; /* Requisito 70% */
     display: flex;
-    justify-content: center; 
-    align-items: center;     
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-#game-container {
+/* FORMULARIO */
+/* .inputContainer{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 15px; 
+} */
+
+
+
+/* #game-container {
     width: 95%;
     max-width: 800px;
     margin: 32px auto;
@@ -52,8 +74,8 @@ main {
     border-radius: 16px;
     border: 3px solid var(--secondary);
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    /* cursor: crosshair; */
-}
+    cursor: crosshair;
+} */
 
 /* --------------- GESTIÓN DE ESCENAS --------------- */
 /*cambiar las escenas*/
@@ -70,6 +92,59 @@ main {
 .hidden-scene { display: none; }
 
 
+/* --------------- FORMULARIO --------------- */
+#escena-formulario {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#escena-formulario {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    justify-content: space-between;
+}
+
+form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding: 10px 20px;
+}
+
+.inputContainer {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputContainer label {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.inputContainer input {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 1rem;
+    border: 1px solid var(--dark);
+    box-sizing: border-box;
+}
 
 
 /* --------------- BOTONES --------------- */
@@ -106,13 +181,19 @@ main {
 }
 
 
-
 /* --------------- FOOTER --------------- */
 #footer {
-    color: var(--light); 
-    padding: 20px; 
-    text-align: center;
-    font-size: 0.9em;
+    height: 20vh; /* Requisito 20% */
+    background-color: var(--primary);
+    border-top: 2px solid var(--secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+
+   
 }
 
 /* --------------- INVENTARIO --------------- */
@@ -123,19 +204,21 @@ main {
     margin: 5px;
     gap: 4px;
     border-radius: 10px;
- 
+    
 }
 
 .item {
     width: 60px;
     height: 60px;
-    border: 2px #bbb;
+    border: 1px solid var(--dark);
     display: flex;
     align-items: center;
     justify-content: center;
     background: #f8f8f8;
     transition: all 0.3s ease;
     overflow: hidden;
+
+    
 }
 
 .item:hover {
@@ -147,7 +230,7 @@ main {
 
 .item img{
     width: 100%;
-  }
+}
 
 
 
