@@ -1,0 +1,49 @@
+
+import { Producto } from "./modules/producto.js";
+import { Enemigo } from "./modules/enemigo.js";
+import { Jefe } from "./modules/jefe.js";
+
+/**
+ * Configuración global y base de datos del juego.
+ */
+
+// CONFIGURACIÓN DE INTERFAZ Y MONEDA
+export const EUR = new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'EUR'
+});
+
+export const AVATAR_JUGADOR = "astrid.png";
+export const INVENTARIO_MAX = 6;
+
+// LÍMITES DE ESTADÍSTICAS
+export const VIDA_MAX_JUGADOR = 500;
+export const VIDA_MAX_ENEMIGO = 200;
+export const PUNTOS_BASE_VICTORIA = 100;
+export const MULTIPLICADOR_JEFE_DEFECTO = 1.25;
+
+// FORMULARIO - EXPRESIONES REGULARES 
+export const regexNombreJugador = /^[A-Z][A-Za-zÁÉÍÓÚáéíóúÑñ\s]{1,19}$/;
+export const NOMBRE_INCORRECTO = "Sólo letras y espacios en blanco, tiene que empezar por mayúsculas. (Máx. 20 carácteres)";
+
+// MERCADO DE PRODUCTOS
+export const PRODUCTOS_MERCADO = [
+    // Formato: Nombre, Imagen, Precio (céntimos), Rareza, Tipo, Bonus (objeto)
+    new Producto("Flecha", "flecha.png", 1200, "rara", "arma", { ataque: 25 }),
+    new Producto("Hacha", "hacha.png", 1500, "legendaria", "arma", { ataque: 40 }),
+    new Producto("Escudo", "escudo.png", 900, "comun", "armadura", { defensa: 25 }),
+    new Producto("Casco", "casco.png", 1000, "rara", "armadura", { defensa: 20 }),
+    new Producto("Fruto de Dragón", "fruta.png", 50, "comun", "consumible", { vida: 20 }),
+    new Producto("Poción", "pocion.png", 80, "legendaria", "consumible", { vida: 60 })
+];
+
+// LISTADO DE ENEMIGOS
+export const ENEMIGOS_DISPONIBLES = [
+    // Enemigo: Nombre, Ataque, Imagen, Vida
+    new Enemigo("Fireworn", 8, "d3.jpg", 30),
+    new Enemigo("Sreaming Death", 9, "d4.jpg", 35),
+    
+    // Jefe: Nombre, Ataque, Imagen, Vida, Multiplicador
+    new Jefe("Death song", 15, "d2.jpg", 80, 1.5),
+    new Jefe("Hideous Zippleback", 20, "d8.jpg", 100, 2.0)
+];
