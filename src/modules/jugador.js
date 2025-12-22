@@ -1,4 +1,4 @@
-
+import { AVATAR_JUGADOR, VIDA_MAX_JUGADOR } from "../constants.js";
 
 // Clase Jugador
 
@@ -71,7 +71,7 @@ export class Jugador {
     * Devuelve una presentación detallada del jugador.
     * @returns {Object} Descripción formateada del jugador.
     */
-    mostrarJugador() {
+    presentarJugador() {
         return `
       👤 ${this.nombre}
       ❤️ Vida: ${this.vida}/${this.vidaMax}

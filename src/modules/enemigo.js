@@ -1,4 +1,4 @@
-
+import { VIDA_MAX_ENEMIGO } from "../constants.js";
 
 /**
  * Clase Enemigo
