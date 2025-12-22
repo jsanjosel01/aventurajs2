@@ -79,17 +79,13 @@ main {
 
 /* --------------- GESTIÓN DE ESCENAS --------------- */
 /*cambiar las escenas*/
-.game-scene {
+.scene {
     display: none;
-    flex-direction: column;
-    gap: 24px;
 }
 
-.active-scene {
-    display: flex;
+.hidden{
+    display: none;
 }
-
-.hidden-scene { display: none; }
 
 
 /* --------------- FORMULARIO --------------- */
