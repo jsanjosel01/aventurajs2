@@ -1,3 +1,4 @@
+import { PRODUCTOS_MERCADO } from "../constants.js";
 
 // MERCADO
 

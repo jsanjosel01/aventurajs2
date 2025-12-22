@@ -1,3 +1,4 @@
+// import { EUR } from '../constants.js';
 
 // PRODUCTO
 
@@ -24,11 +25,10 @@ export class Producto {
     }
 
     /**
-     * Formatea el precio usando el formateador internacional.
+     * Formatea el precio.
      */
     get precioEuros() {
-        return EUR.format(this.precio / 100); //Divido por 100 para obtener los centimos
-    
+        return this.precio + "💰"; 
     }
 
     /**

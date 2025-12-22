@@ -7,14 +7,14 @@ import { Jefe } from "./modules/jefe.js";
  * Configuración global y base de datos del juego.
  */
 
-// CONFIGURACIÓN DE INTERFAZ Y MONEDA
+// CONFIGURACIÓN MONEDA
 export const EUR = new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'EUR'
 });
 
 export const AVATAR_JUGADOR = "astrid.png";
-export const INVENTARIO_MAX = 6;
+export const INVENTARIO_TAMANIO  = 6;
 
 // LÍMITES DE ESTADÍSTICAS
 export const VIDA_MAX_JUGADOR = 500;
@@ -29,10 +29,10 @@ export const NOMBRE_INCORRECTO = "Sólo letras y espacios en blanco, tiene que e
 // MERCADO DE PRODUCTOS
 export const PRODUCTOS_MERCADO = [
     // Formato: Nombre, Imagen, Precio (céntimos), Rareza, Tipo, Bonus (objeto)
-    new Producto("Flecha", "flecha.png", 1200, "rara", "arma", { ataque: 25 }),
-    new Producto("Hacha", "hacha.png", 1500, "legendaria", "arma", { ataque: 40 }),
-    new Producto("Escudo", "escudo.png", 900, "comun", "armadura", { defensa: 25 }),
-    new Producto("Casco", "casco.png", 1000, "rara", "armadura", { defensa: 20 }),
+    new Producto("Flecha", "flecha.png", 100, "rara", "arma", { ataque: 25 }),
+    new Producto("Hacha", "hacha.png", 90, "legendaria", "arma", { ataque: 40 }),
+    new Producto("Escudo", "escudo.png", 100, "comun", "armadura", { defensa: 25 }),
+    new Producto("Casco", "casco.png", 10, "rara", "armadura", { defensa: 20 }),
     new Producto("Fruto de Dragón", "fruta.png", 50, "comun", "consumible", { vida: 20 }),
     new Producto("Poción", "pocion.png", 80, "legendaria", "consumible", { vida: 60 })
 ];

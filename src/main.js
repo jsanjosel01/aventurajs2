@@ -1,6 +1,8 @@
-import { mostrarEscena, mostrarJugador } from "./modules/escenas.js";
+import { mostrarEscena, mostrarJugador, mostrarMercado } from "./modules/escenas.js";
 import { Jugador } from "./modules/jugador.js";
 import { checkFullForm } from "./modules/registro.js";
+
+let jugadorPrincipal = null;
 
 document.getElementById("btn-empezar").addEventListener("click", () => {
     // Validar los datos del formulario 
@@ -11,12 +13,28 @@ document.getElementById("btn-empezar").addEventListener("click", () => {
         const vida = parseInt(document.getElementById("vida").value) || 100;
 
         // Crear la instancia del jugador
-        const nuevoJugador = new Jugador(nombre, ataque, defensa, vida);
+        jugadorPrincipal = new Jugador(nombre, ataque, defensa, vida);
 
         // Renderizar la tarjeta del jugador 
-        mostrarJugador(nuevoJugador);
+        mostrarJugador(jugadorPrincipal);
 
         // Cambiar la vista de la Escena 1 a la Escena 2
         mostrarEscena("escena-jugadora");
     }
 });
+
+// ESCENA 3: MERCADO
+document.getElementById("btn-mercado").addEventListener("click", () => {
+    
+    // Cambiar a la escena 3
+    mostrarEscena("escena-mercado");
+
+    try {
+        if (jugadorPrincipal) {
+            mostrarMercado(jugadorPrincipal);
+        }
+    } catch (error) {
+        console.error("Error en el mercado negro:", error);
+    }
+});
+
