@@ -26,8 +26,8 @@ export function mostrarJugador(jugador) {
 
     // Insertar la imagen y nombre en la zona del avatar [cite: 51, 52]
     contenedorProtagonista.innerHTML = `
-        <p><b>${jugador.nombre}</b></p>
         <img src="img/${jugador.avatar}" alt="Avatar de ${jugador.nombre}" id="avatar-img">
+        <p><b>${jugador.nombre}</b></p>
     `;
 
     // Insertar las estadísticas
