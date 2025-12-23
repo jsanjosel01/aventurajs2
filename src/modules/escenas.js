@@ -23,11 +23,13 @@ export function mostrarEscena(idEscena) {
  * Renderiza la tarjeta informativa del jugador con sus estadísticas iniciales.
  * @param {Jugador} jugador - Instancia de la clase Jugador con los datos.
  */
+
+// Funcion Mostrar jugador
 export function mostrarJugador(jugador) {
     const contenedorStats = document.getElementById("stat-box");
     const contenedorProtagonista = document.querySelector(".protagonista");
 
-    // Insertar la imagen y nombre en la zona del avatar [cite: 51, 52]
+    // Insertar la imagen y nombre en la zona del avatar 
     contenedorProtagonista.innerHTML = `
         <img src="img/${jugador.avatar}" alt="Avatar de ${jugador.nombre}" id="avatar-img">
         <p><b>${jugador.nombre}</b></p>
@@ -35,10 +37,10 @@ export function mostrarJugador(jugador) {
 
     // Insertar las estadísticas
     contenedorStats.innerHTML = `
-        <div class="stat-item"><b>Ataque:</b> ${jugador.ataque}</div>
-        <div class="stat-item"><b>Defensa:</b> ${jugador.defensa}</div>
-        <div class="stat-item"><b>Vida:</b> ${jugador.vida}</div>
-        <div class="stat-item"><b>Puntos:</b> ${jugador.puntos}</div>
+        <div class="stat-item">⚔️ Ataque: ${jugador.ataque}</div>
+        <div class="stat-item">🛡️ Defensa: ${jugador.defensa}</div>
+        <div class="stat-item">❤️ Vida: ${jugador.vida}</div>
+        <div class="stat-item">⭐ Puntos: ${jugador.puntos}</div>
     `;
 
 }
@@ -114,4 +116,28 @@ export function mostrarMercado(jugador) {
         productoDiv.appendChild(botonAccion);
         mercadoDiv.appendChild(productoDiv);
     });
+}
+
+
+// Función para mostrar el estado actual del jugador
+export function mostrarEstadoActual(jugador) {
+    const contenedorProta = document.querySelector("#escena-estado-actual .protagonista");
+    const contenedorStats = document.getElementById("stat-box-actualizado");
+
+    // Insertar la img y nombre
+    contenedorProta.innerHTML = `
+        <img src="img/${jugador.avatar}" alt="Avatar de ${jugador.nombre}" id="avatar-img-final">
+        <p><b>${jugador.nombre}</b></p>
+    `;
+
+    // Insertar las estadísticas actualizadas
+    contenedorStats.innerHTML = `
+        <div class="stat-item">⚔️ Ataque Total: ${jugador.ataque}</div>
+        <div class="stat-item">🛡️ Defensa Total: ${jugador.defensa}</div>
+        <div class="stat-item">❤️ Vida Total: ${jugador.vida}</div>
+        <div class="stat-item">⭐ Puntos Totales: ${jugador.puntos}</div>
+    `;
+
+    // Cambiamos a la escena 4 (Enemigos)
+    mostrarEscena("escena-estado-actual");
 }
