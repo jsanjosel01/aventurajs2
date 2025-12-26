@@ -1,6 +1,12 @@
 import { rarezaRandom, descuentoRandom, aplicarDescuentoPorRareza, actualizarInventario } from "./mercado.js";
 
 import { ENEMIGOS_DISPONIBLES } from "../constants.js";
+import { batalla } from "./batalla.js";
+
+
+// Inicar las batallas a 0
+let indiceBatallaActual = 0;
+
 /**
  * Gestiona el cambio de escenas ocultando todas y mostrando la deseada.
  * @param {string} idEscena - El ID del contenedor HTML de la escena a mostrar.
@@ -144,6 +150,7 @@ export function mostrarEstadoActual(jugador) {
 
 // Función para mostrar los enemigos con sus estadísticas
 export function mostrarEscenaEnemigos() {
+    indiceBatallaActual = 0;
     const contenedor = document.getElementById("contenedor-enemigos");
     if (!contenedor) return; 
     
@@ -170,3 +177,49 @@ export function mostrarEscenaEnemigos() {
 window.iniciarCombate = (nombre) => {
     alert("¡Vas a luchar contra " + nombre + "!");
 };
+
+// ESCENA 6
+export function irABatalla(jugador) {
+    const enemigo = ENEMIGOS_DISPONIBLES[indiceBatallaActual];
+    const resultado = batalla(jugador, enemigo);
+
+    document.getElementById("contenedor-batallas").innerHTML = `
+        <div class="producto">
+            <img src="img/${jugador.avatar}" class="imgProducto">
+            <p><b>${jugador.nombre}</b></p>
+        </div>
+        <div style="font-weight: bold; font-size: 2rem;">VS</div>
+        <div class="producto">
+            <img src="img/${enemigo.avatar}" class="imgProducto">
+            <p><b>${enemigo.nombre}</b></p>
+        </div>
+    `;
+
+    // Mostramos el resultado
+    const resultadoDiv = document.getElementById("resultado-batallas");
+    resultadoDiv.classList.remove("hidden");
+    document.getElementById("recompensa-resultado").innerHTML = `
+        <b>Ganador:</b> ${resultado.ganador} <br>
+        <b>Puntos obtenidos:</b> +${resultado.puntos} pts
+    `;
+
+    const btn = document.getElementById("btn-ir-combate");
+   
+    btn.onclick = null; 
+
+    if (indiceBatallaActual < ENEMIGOS_DISPONIBLES.length - 1) {
+        btn.textContent = "Siguiente Batalla";
+        btn.onclick = () => {
+            indiceBatallaActual++;
+            irABatalla(jugador);    
+        };
+    } else {
+        btn.textContent = "ver resultado final";
+        btn.onclick = () => {
+            mostrarEscena7(jugador);
+        };
+    }
+
+    mostrarEscena("escena-batallas");
+}
+

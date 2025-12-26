@@ -124,7 +124,7 @@ form {
 
 /* --------------- BOTONES --------------- */
 
-#btn-empezar,#btn-mercado, .botonComprar, #btn-estado, #btn-ir-enemigos, #btn-ir-batallas{
+#btn-empezar,#btn-mercado, .botonComprar, #btn-estado, #btn-ir-enemigos, #btn-ir-batallas, #btn-ir-combate{
     font-family: "MedievalSharp", cursive;
     font-weight: bold;
     padding: 8px 10px;
@@ -136,7 +136,7 @@ form {
     transition: 0.2s;
 }
 
-#btn-empezar, #btn-mercado, .botonComprar, #btn-estado, #btn-ir-enemigos, #btn-ir-batallas {
+#btn-empezar, #btn-mercado, .botonComprar, #btn-estado, #btn-ir-enemigos, #btn-ir-batallas, #btn-ir-combate{
     background: var(--accent);
     font-size: 1.2rem;
     display: block;
@@ -147,7 +147,7 @@ form {
     background: #ffba53;
     transform: scale(1.05);
 }
-#btn-estado:hover:not(:disabled), #btn-ir-enemigos:hover:not(:disabled), #btn-ir-batallas:hover:not(:disabled){
+#btn-estado:hover:not(:disabled), #btn-ir-enemigos:hover:not(:disabled), #btn-ir-batallas:hover:not(:disabled), #btn-ir-combate:hover:not(:disabled){
     background: #ffba53;
     transform: scale(1.05);
 }
@@ -159,7 +159,7 @@ form {
     border-color: #444;
 }
 
-#btn-ir-batallas:disabled{
+#btn-ir-batallas:disabled, #btn-ir-combate:disabled{
     background: #666;
     color: #999;
     cursor: not-allowed;
@@ -298,7 +298,32 @@ form {
     justify-content: space-around;
 }
 
-#contenedor-enemigos .imgProducto {
+#contenedor-enemigos .imgProducto{
+    max-height: 100px;
+    width: auto;
+}
+
+
+/* --- ESCENA BATALLAS --- */
+.grid-batallas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;          
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#contenedor-batallas .producto{
+    flex: 1;
+    max-width: 22%;
+    padding: 10px;
+    height: 90%; 
+    justify-content: space-around;
+ }
+
+#contenerdor-batallas .imgProducto{
     max-height: 100px;
     width: auto;
 }
