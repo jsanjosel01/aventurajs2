@@ -1,6 +1,6 @@
 import { rarezaRandom, descuentoRandom, aplicarDescuentoPorRareza, actualizarInventario } from "./mercado.js";
 
-
+import { ENEMIGOS_DISPONIBLES } from "../constants.js";
 /**
  * Gestiona el cambio de escenas ocultando todas y mostrando la deseada.
  * @param {string} idEscena - El ID del contenedor HTML de la escena a mostrar.
@@ -138,6 +138,35 @@ export function mostrarEstadoActual(jugador) {
         <div class="stat-item">⭐ Puntos Totales: ${jugador.puntos}</div>
     `;
 
-    // Cambiamos a la escena 4 (Enemigos)
+    // Cambiamos a la escena 4
     mostrarEscena("escena-estado-actual");
 }
+
+// Función para mostrar los enemigos con sus estadísticas
+export function mostrarEscenaEnemigos() {
+    const contenedor = document.getElementById("contenedor-enemigos");
+    if (!contenedor) return; 
+    
+    contenedor.innerHTML = ""; 
+
+    ENEMIGOS_DISPONIBLES.forEach((enemigo) => {
+        const esJefe = enemigo.tipo === 'Jefe';
+        const card = document.createElement("div");
+        card.className = "producto"; 
+        
+        card.innerHTML = `
+            <img src="img/${enemigo.avatar}" class="imgProducto" alt="${enemigo.nombre}">
+            <div class="infoProducto">
+                <p><b>${enemigo.nombre}</b></p>
+                <p>⚔️ Ataque: ${enemigo.ataque}</p>
+            </div>
+        `;
+        contenedor.appendChild(card);
+    });
+    // Cambiamos a la escena 5 (Enemigos)
+    mostrarEscena("escena-enemigos");
+}
+
+window.iniciarCombate = (nombre) => {
+    alert("¡Vas a luchar contra " + nombre + "!");
+};

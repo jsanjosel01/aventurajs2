@@ -1,6 +1,7 @@
-import { mostrarEscena, mostrarJugador, mostrarMercado, mostrarEstadoActual } from "./modules/escenas.js";
+import { mostrarEscena, mostrarJugador, mostrarMercado, mostrarEstadoActual, mostrarEscenaEnemigos } from "./modules/escenas.js";
 import { Jugador } from "./modules/jugador.js";
 import { checkFullForm } from "./modules/registro.js";
+
 
 let jugadorPrincipal = null;
 
@@ -39,7 +40,11 @@ document.getElementById("btn-mercado").addEventListener("click", () => {
 });
 
 // ESCENA 4: ESTADO ACTUAL
-
 document.getElementById("btn-estado").addEventListener("click", () => {
     mostrarEstadoActual(jugadorPrincipal);
+});
+
+// ESCENA 5: ENEMIGOS
+document.getElementById('btn-ir-enemigos').addEventListener('click', () => {
+    mostrarEscenaEnemigos();
 });
