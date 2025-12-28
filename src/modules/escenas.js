@@ -272,7 +272,7 @@ export function irAClasificacion(jugador) {
     if (rankings.length === 0) {
         for (let i = 1; i <= 10; i++) {
             rankings.push({ 
-                nombre: `Enemigo ${i}`, 
+                nombre: `Enemigo`, 
                 puntos: 50 * i, 
                 dinero: i * 5 
             });
@@ -281,6 +281,10 @@ export function irAClasificacion(jugador) {
 
     // Añadir el jugador y guardar
     rankings.push(nuevoRegistro);
+
+    // OPCIONAL: Ordenar por puntos de mayor a menor
+    rankings.sort((a, b) => b.puntos - a.puntos);
+    
     localStorage.setItem("ranking_jugadores", JSON.stringify(rankings));
 
     // Tabla 
@@ -317,4 +321,10 @@ export function irAClasificacion(jugador) {
     }
 
     mostrarEscena("escena-clasificacion");
+
+    // FORZAR CENTRAR TABLA:
+    const escena = document.getElementById("escena-clasificacion");
+    if (escena) {
+        escena.style.display = "flex"; 
+    }
 }
