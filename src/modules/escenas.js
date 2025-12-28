@@ -2,6 +2,7 @@ import { rarezaRandom, descuentoRandom, aplicarDescuentoPorRareza, actualizarInv
 
 import { ENEMIGOS_DISPONIBLES } from "../constants.js";
 import { batalla } from "./batalla.js";
+import { calcularNivel } from "./ranking.js";
 
 
 // Inicar las batallas a 0
@@ -208,18 +209,35 @@ export function irABatalla(jugador) {
     btn.onclick = null; 
 
     if (indiceBatallaActual < ENEMIGOS_DISPONIBLES.length - 1) {
-        btn.textContent = "Siguiente Batalla";
-        btn.onclick = () => {
-            indiceBatallaActual++;
-            irABatalla(jugador);    
-        };
+    btn.textContent = "Luchar";
+    btn.onclick = () => {
+        indiceBatallaActual++;
+        irABatalla(jugador);
+    };
     } else {
-        btn.textContent = "ver resultado final";
+        btn.textContent = "Finalizar combates";
         btn.onclick = () => {
-            mostrarEscena7(jugador);
+            irAResultadoFinal(jugador); 
         };
+
     }
 
     mostrarEscena("escena-batallas");
 }
 
+// ESCENA 7
+export function irAResultadoFinal(jugador) {
+    const contenedor = document.getElementById("contenedor-resultado-final");
+    
+    if (contenedor) {
+        // Calculamos nivel (confetti)
+        const nivel = calcularNivel(jugador, 300);
+        
+        contenedor.innerHTML = `
+            <h3>${nivel}</h3>
+            <p>Puntos totales: ${jugador.puntos + jugador.dinero}</p>
+        `;
+    }
+    
+    mostrarEscena("escena-resultados");
+}
