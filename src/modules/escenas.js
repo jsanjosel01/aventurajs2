@@ -230,14 +230,91 @@ export function irAResultadoFinal(jugador) {
     const contenedor = document.getElementById("contenedor-resultado-final");
     
     if (contenedor) {
-        // Calculamos nivel (confetti)
+        // Calculamos el rango (Novato o Veterano)
         const nivel = calcularNivel(jugador, 300);
         
+        // Calculamos los puntos totales (Batalla + Monedas)
+        const puntosTotales = jugador.puntos + jugador.dinero;
+        
+        // Imprimimos el resultado
         contenedor.innerHTML = `
             <h3>${nivel}</h3>
-            <p>Puntos totales: ${jugador.puntos + jugador.dinero}</p>
+            <p>Puntos totales: ${puntosTotales}</p>
         `;
+    }
+
+    // Configuración del botón para pasar a la tabla de clasificación (Escena 8)
+    const btnRanking = document.getElementById("btn-ir-ranking");
+    if (btnRanking) {
+        btnRanking.onclick = () => {
+            irAClasificacion(jugador);
+        };
     }
     
     mostrarEscena("escena-resultados");
+}
+
+// ESCENA 8
+export function irAClasificacion(jugador) {
+    const contenedor = document.getElementById("contenedor-clasificacion");
+    
+    // Registro del jugador actual
+    const nuevoRegistro = {
+        nombre: jugador.nombre,
+        puntos: jugador.puntos,
+        dinero: jugador.dinero
+    };
+
+    // Recuperar ranking del LocalStorage
+    let rankings = JSON.parse(localStorage.getItem("ranking_jugadores")) || [];
+    
+    // Si está vacío, rellenamos con Enemigos para tener scroll
+    if (rankings.length === 0) {
+        for (let i = 1; i <= 10; i++) {
+            rankings.push({ 
+                nombre: `Enemigo ${i}`, 
+                puntos: 50 * i, 
+                dinero: i * 5 
+            });
+        }
+    }
+
+    // Añadir el jugador y guardar
+    rankings.push(nuevoRegistro);
+    localStorage.setItem("ranking_jugadores", JSON.stringify(rankings));
+
+    // Tabla 
+    if (contenedor) {
+        contenedor.innerHTML = `
+            <h2 class="titulo-ranking">Ranking</h2>
+            <div class="tabla-contenedor">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Puntos</th>
+                            <th>Dinero</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rankings.map(reg => `
+                            <tr>
+                                <td>${reg.nombre}</td>
+                                <td>${reg.puntos}</td>
+                                <td>${reg.dinero}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+
+    // Botón reiniciar juego
+    const btnReiniciar = document.getElementById("btn-reiniciar");
+    if (btnReiniciar) {
+        btnReiniciar.onclick = () => location.reload();
+    }
+
+    mostrarEscena("escena-clasificacion");
 }
