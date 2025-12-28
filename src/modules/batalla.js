@@ -34,6 +34,8 @@ export function batalla(jugador, enemigo) {
         jugador.puntos += puntosGanados;
         jugador.dinero += monedasGanadas;
 
+        localStorage.setItem("datos_jugador", JSON.stringify(jugador));
+        
         return {
             ganador: jugador.nombre,
             puntos: puntosGanados,

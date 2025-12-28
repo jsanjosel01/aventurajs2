@@ -29,25 +29,47 @@ export function validarNombre() {
  * (Por ejemplo, que no sean negativos o que sumen un máximo).
  * @returns {boolean}
  */
+
 export function validarCantidadTotal() {
-    const ataque = parseInt(document.getElementById("ataque").value) || 0;
-    const defensa = parseInt(document.getElementById("defensa").value) || 0;
-    const vida = parseInt(document.getElementById("vida").value) || 0;
+    const inputAtaque = document.getElementById("ataque");
+    const inputDefensa = document.getElementById("defensa");
+    const inputVida = document.getElementById("vida");
 
-    // Validación básica: que no haya valores negativos
-    if (ataque < 0 || defensa < 0 || vida < 100) {
-        return false;
-    }
+    const ataque = parseInt(inputAtaque.value) || 0;
+    const defensa = parseInt(inputDefensa.value) || 0;
+    const vida = parseInt(inputVida.value) || 0;
 
-    return true;
+    const sumaTotal = ataque + defensa + vida;
+    const MAX_TOTAL = 110;
+
+    // REQUISITOS DEL ENUNCIADO:
+    const ataqueValido = ataque >= 0;
+    const defensaValido = defensa >= 0;
+    const vidaValida = vida >= 100; // Nunca inferior a 100
+    const sumaValida = sumaTotal <= MAX_TOTAL; // No más de 110 (reparto de 10 puntos)
+
+    const statsCorrectos = ataqueValido && defensaValido && vidaValida && sumaValida;
+
+    // Feedback visual
+    const color = statsCorrectos ? "green" : "red";
+    [inputAtaque, inputDefensa, inputVida].forEach(input => {
+        input.style.borderColor = color;
+    });
+
+    return statsCorrectos;
 }
 
 /**
- * Ejecuta todas las validaciones antes de permitir el envío del formulario.
+ * Comprueba todo el formulario para habilitar el botón "Empezar"
  */
 export function checkFullForm() {
     const esNombreValido = validarNombre();
     const sonStatsValidos = validarCantidadTotal();
+
+    const btnEmpezar = document.getElementById("btn-empezar");
+    if (btnEmpezar) {
+        btnEmpezar.disabled = !(esNombreValido && sonStatsValidos);
+    }
 
     return esNombreValido && sonStatsValidos;
 }
