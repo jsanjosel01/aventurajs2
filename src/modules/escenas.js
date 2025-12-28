@@ -52,16 +52,24 @@ export function mostrarJugador(jugador) {
 
 }
 
+// ESCENA MERCADO
 // Funcion para mostrar el mercado
 export function mostrarMercado(jugador) {
     const mercadoDiv = document.getElementById("mercado");
     const pDinero = document.getElementById("dinero");
     const casillasFooter = document.querySelectorAll("#inventory-container .item");
 
-    // Función simple para actualizar el texto del dinero
+    // MONEDERO
     const actualizarTextoDinero = () => {
-        pDinero.innerHTML = `<em>ORO DISPONIBLE:</em> ${jugador.dinero} 💰`;
-    };
+    const spanMonedero = document.getElementById("dinero-enmonedero");
+    
+    if (spanMonedero) {
+        spanMonedero.innerText = `${jugador.dinero}$`;
+    }
+    
+    // Guardamos en localStorage
+    localStorage.setItem("datos_jugador", JSON.stringify(jugador));
+};
 
     mercadoDiv.innerHTML = "";
     actualizarTextoDinero();

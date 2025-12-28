@@ -411,18 +411,70 @@ form {
 
 
 /* --------------- FOOTER --------------- */
+
 #footer {
-    height: 20vh; /* Requisito 20% */
+    height: 20vh;
     background-color: var(--primary);
     border-top: 2px solid var(--secondary);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    box-sizing: border-box;
+    align-items: center; 
+    justify-content: center; 
+    position: relative;
+    overflow: hidden;
+}
 
-   
+#footer p {
+    position: absolute;
+    bottom: 3px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    
+}
+
+#monedero {
+    position: absolute; 
+    left: 40px;         /* Ajusta la distancia desde la izquierda */
+    top: 30%;           /* Lo centramos verticalmente */
+    transform: translateY(-50%); /* Ajuste perfecto del centro vertical */
+    
+    width: 90px;        /* Tamaño de la imagen */
+    height: 90px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    z-index: 10;        /* Asegura que esté por encima de todo */
+}
+
+.img-monedero {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#monedero span {
+    position: absolute; /* Se pone SOBRE la imagen */
+    font-size: 0.9rem;
+    color: var(--dark);
+    font-weight: bold;
+    margin-top: 8px;    /* Mueve el número arriba/abajo para que encaje en el dibujo */
+}
+
+/* --- ANIMACIÓN --- */
+.animacion-entrada {
+    animation: deslizarDesdeIzquierda 1.2s ease-out forwards;
+}
+
+@keyframes deslizarDesdeIzquierda {
+    0% {
+        transform: translateX(-200px); /* Empieza muy a la izquierda (fuera) */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);      /* Llega a su posición original (left: 40px) */
+        opacity: 1;
+    }
 }
 
 /* --------------- INVENTARIO --------------- */
