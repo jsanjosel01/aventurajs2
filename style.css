@@ -329,6 +329,46 @@ form {
     width: auto;
 }
 
+/* ANIMACIÓN IMG PERSONAJES */
+@keyframes deDerecha {
+    0% { transform: translateX(100vw); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes deIzquierda {
+    0% { transform: translateX(-100vw); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+.animar-prota { animation: deDerecha 1.2s ease-out forwards; }
+.animar-enemigo { animation: deIzquierda 1.2s ease-out forwards; }
+
+
+/* ANIMACIÓN MONEDAS */
+.moneda {
+    position: fixed;
+    top: -100px;
+    width: 60px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: caerYDifuminar 2.5s ease-in-out forwards;
+}
+.moneda img {
+    width: 100%;
+    animation: rotarMoneda 1s linear infinite;
+}
+
+@keyframes caerYDifuminar {
+    0% { top: -100px; opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 50vh; opacity: 0; }
+}
+@keyframes rotarMoneda {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+#escena-batallas { overflow-x: hidden; }
+
+
 /* --- ESCENA RANKING --- */
 #escena-clasificacion {
     display: none;

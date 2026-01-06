@@ -187,22 +187,39 @@ window.iniciarCombate = (nombre) => {
     alert("¡Vas a luchar contra " + nombre + "!");
 };
 
+
 // ESCENA 6
 export function irABatalla(jugador) {
     const enemigo = ENEMIGOS_DISPONIBLES[indiceBatallaActual];
     const resultado = batalla(jugador, enemigo);
 
     document.getElementById("contenedor-batallas").innerHTML = `
-        <div class="producto">
+        <div class="producto animar-prota">
             <img src="img/${jugador.avatar}" class="imgProducto">
             <p><b>${jugador.nombre}</b></p>
         </div>
         <div style="font-weight: bold; font-size: 2rem;">VS</div>
-        <div class="producto">
+        <div class="producto animar-enemigo">
             <img src="img/${enemigo.avatar}" class="imgProducto">
             <p><b>${enemigo.nombre}</b></p>
         </div>
     `;
+
+    // LÓGICA DE MONEDAS (Solo si gana el jugador)
+    if (resultado.ganador === jugador.nombre) {
+        let htmlMonedas = `
+           <div class="moneda" style="left: 25vw;"><img src="img/moneda.png"></div>
+            <div class="moneda" style="left: 50vw;"><img src="img/moneda.png"></div>
+            <div class="moneda" style="left: 75vw;"><img src="img/moneda.png"></div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', htmlMonedas);
+
+        // Limpiamos las monedas del body cuando acabe la animación
+        setTimeout(() => {
+            document.querySelectorAll('.moneda-animada').forEach(m => m.remove());
+        }, 3000);
+    }
 
     // Mostramos el resultado
     const resultadoDiv = document.getElementById("resultado-batallas");
@@ -213,21 +230,19 @@ export function irABatalla(jugador) {
     `;
 
     const btn = document.getElementById("btn-ir-combate");
-   
     btn.onclick = null; 
 
     if (indiceBatallaActual < ENEMIGOS_DISPONIBLES.length - 1) {
-    btn.textContent = "Luchar";
-    btn.onclick = () => {
-        indiceBatallaActual++;
-        irABatalla(jugador);
-    };
+        btn.textContent = "Luchar";
+        btn.onclick = () => {
+            indiceBatallaActual++;
+            irABatalla(jugador);
+        };
     } else {
         btn.textContent = "Finalizar combates";
         btn.onclick = () => {
             irAResultadoFinal(jugador); 
         };
-
     }
 
     mostrarEscena("escena-batallas");

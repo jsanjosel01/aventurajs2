@@ -40,10 +40,10 @@ export const PRODUCTOS_MERCADO = [
 // LISTADO DE ENEMIGOS
 export const ENEMIGOS_DISPONIBLES = [
     // Enemigo: Nombre, Ataque, Imagen, Vida
-    new Enemigo("Fireworn", 8, "d3.jpg", 30),
-    new Enemigo("Sreaming Death", 9, "d4.jpg", 35),
+    new Enemigo("Fireworn", 4, "d3.jpg", 20),
+    new Enemigo("Sreaming Death", 7, "d4.jpg", 8),
     
     // Jefe: Nombre, Ataque, Imagen, Vida, Multiplicador
-    new Jefe("Death song", 15, "d2.jpg", 80, 1.5),
-    new Jefe("Hideous Zippleback", 20, "d8.jpg", 100, 2.0)
+    new Jefe("Death song", 10, "d2.jpg", 80, 1.5),
+    new Jefe("Hideous Zippleback", 15, "d8.jpg", 100, 2.0)
 ];
