@@ -313,7 +313,7 @@ export function irAClasificacion(jugador) {
     // Tabla 
     if (contenedor) {
         contenedor.innerHTML = `
-            <h2 class="titulo-ranking">Ranking</h2>
+            
             <div class="tabla-contenedor">
                 <table class="ranking-table">
                     <thead>

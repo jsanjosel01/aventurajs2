@@ -13,7 +13,7 @@ export const EUR = new Intl.NumberFormat('es-ES', {
     currency: 'EUR'
 });
 
-export const AVATAR_JUGADOR = "astrid.png";
+export const AVATAR_JUGADOR = "as2.jpg";
 export const INVENTARIO_TAMANIO  = 6;
 
 // LÍMITES DE ESTADÍSTICAS

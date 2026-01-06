@@ -395,6 +395,7 @@ form {
     max-width: 600px;
     max-height: 400px; 
     overflow-y: auto;
+    padding-top: 0;
 
 }
 
@@ -407,14 +408,41 @@ form {
     color: var(--light);
 }
 
-/* Estilo de los encabezados */
+/* --- FILAS IMPARES (1, 3, 5...) --- */
+.ranking-table tbody tr:nth-child(odd) {
+    background-color: var(--primary); 
+}
+
+/* --- FILAS PARES (2, 4, 6...) --- */
+.ranking-table tbody tr:nth-child(even) {
+    background-color: var(--primary);
+    filter: brightness(0.8); 
+}
+
+/* --- CABECERA FIJA Y OPACA --- */
 .ranking-table th {
+    position: sticky;
+    top: 0;
+    z-index: 100; 
+    background-color: #f0950e;
+    color: var(--dark);
+    padding: 10px;
+    border: 2px solid var(--secondary);
+}
+
+/* Estilo de los encabezados */
+/* .ranking-table th {
     background-color: var(--accent);
     color: var(--dark);
     padding: 10px;
     border: 2px solid var(--secondary);
     font-weight: bold;
-}
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
+} */
 
 /* Celdas generales */
 .ranking-table td {
@@ -425,7 +453,7 @@ form {
 }
 
 /* COLUMNAS */
-.ranking-table td:nth-child(1) {
+/* .ranking-table td:nth-child(1) {
     background-color: var(--dark);
 }
 .ranking-table td:nth-child(2) {
@@ -433,7 +461,7 @@ form {
 }
 .ranking-table td:nth-child(3) {
     background-color: var(--primary);
-}
+} */
 
 
 /* Personalizar la barra de scroll */
@@ -448,6 +476,7 @@ form {
     border: 1px solid var(--secondary);
     border-radius: 5px;
 }
+
 
 
 /* --------------- FOOTER --------------- */
