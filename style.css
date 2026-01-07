@@ -557,7 +557,7 @@ form {
     top: 30%;           /* Lo centramos verticalmente */
     transform: translateY(-50%); /* Ajuste perfecto del centro vertical */
     
-    width: 90px;        /* Tamaño de la imagen */
+    width: 150px;        /* Tamaño de la imagen */
     height: 90px;
     display: flex;
     justify-content: center; 
@@ -632,6 +632,151 @@ form {
 }
 
 
+/* --------------- RESPONSIVE --------------- */
 
+/* Dispositivos medianos (hasta 720px) */
+@media (max-width: 720px) {
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
 
+    main {
+        height: 70vh;
+        overflow-y: auto;
+        display: block;
+        padding: 10px;
+    }
 
+    /* FOOTER: Organización vertical y visibilidad total */
+    #footer {
+        height: auto;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0 15px 0;
+        overflow: visible !important; /* Evita que el texto desaparezca */
+    }
+
+    /* Monedero arriba */
+    #monedero {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 10px;
+        order: 1; /* Primero en el orden flex */
+    }
+
+    /* Inventario al medio */
+    #inventory-container {
+        position: relative;
+        margin: 0 auto;
+        order: 2; /* Segundo en el orden flex */
+    }
+
+    /* Párrafo al final */
+    #footer p {
+        position: relative; 
+        bottom: auto;       
+        width: 100%;
+        margin-top: 15px;   
+        font-size: 0.8rem;
+        color: var(--light);
+        display: block;
+        order: 3; /* Tercero en el orden flex */
+    }
+
+    /* MERCADO: 2 columnas */
+    #mercado {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .grid-enemigos, .grid-batallas {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    /* ENEMIGOS: Tamaño estándar */
+    #contenedor-enemigos .producto {
+        flex: none;
+        width: 85%;
+        max-width: 280px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    #contenedor-enemigos .imgProducto {
+        width: 110px;
+        height: 110px;
+    }
+
+    /* BATALLAS: MÁS PEQUEÑO Y COMPACTO */
+    #contenedor-batallas .producto {
+        flex: none;
+        width: 80%;       /* Más estrecho */
+        max-width: 250px;
+        height: 170px;     /* Mucho más bajo */
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    #contenedor-batallas .imgProducto {
+        width: 75px;       /* Imagen reducida */
+        height: 75px;
+        min-height: 75px;
+        margin-bottom: 5px;
+    }
+
+    #stat-box, #stat-box-actualizado {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Dispositivos pequeños (hasta 360px) */
+@media (max-width: 360px) {
+    header h1 { font-size: 1.1rem; }
+
+    #mercado { grid-template-columns: 1fr; }
+
+    #monedero { width: 120px; height: 75px; }
+
+    /* Enemigos en 360px */
+    #contenedor-enemigos .producto {
+        width: 95%;
+        height: 220px;
+    }
+
+    /* Batallas aún más pequeñas en 360px */
+    #contenedor-batallas .producto {
+        width: 90%;
+        height: 140px;
+        padding: 8px;
+    }
+
+    #contenedor-batallas .imgProducto {
+        width: 60px;
+        height: 60px;
+        min-height: 60px;
+    }
+
+    #inventory-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+    }
+
+    .item { width: 45px; height: 45px; }
+
+    #footer p {
+        font-size: 0.7rem;
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+}
