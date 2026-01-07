@@ -172,7 +172,11 @@ form {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
 
 }
 
@@ -182,15 +186,29 @@ form {
     align-items: center;
     gap: 10px;
     padding: 8px;
+    
 }
 
 #avatar-img, #avatar-img-final {
-    width: 110px;           
-    height: 90px;
+    width: 150px;           
+    height: 120px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid var(--secondary);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+
+    gap: 8px;
+    padding: 4px;
+    
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el ratón */
+#avatar-img:hover, #avatar-img-final:hover {
+    transform: scale(1.1); 
+    filter: brightness(1.1); /* Brillo */
+    background-color: var(--primary);
 }
 
 #stat-box, #stat-box-actualizado {
@@ -208,7 +226,7 @@ form {
 /* cuadraditos */
 .stat-item {
     background-color: var(--primary);
-    border: 1px solid var(--secondary);
+    border: 2px solid var(--secondary);
     padding: 20px;
     text-align: center;
     border-radius: 8px;
@@ -278,6 +296,12 @@ form {
 
 
 /* --- ESCENA ENEMIGOS --- */
+
+#escena-enemigos{
+    padding-top: 20px; 
+      
+}
+
 .grid-enemigos {
     display: flex;
     justify-content: center;
@@ -286,6 +310,7 @@ form {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    padding: 20px;
 }
 
 #contenedor-enemigos .producto {
@@ -303,6 +328,11 @@ form {
 
 
 /* --- ESCENA BATALLAS --- */
+#escena-batallas{
+    padding-top: 20px; 
+      
+}
+
 .grid-batallas{
     display: flex;
     justify-content: center;
@@ -314,6 +344,7 @@ form {
 
     max-width: 800px; 
     margin: 0 auto;
+    padding: 20px;
 }
 
 #contenedor-batallas .producto{
@@ -369,6 +400,25 @@ form {
 #escena-batallas { overflow-x: hidden; }
 
 
+/* ESCENA RESULTADOS */
+#escena-resultados{
+    padding-top: 20px; 
+      
+}
+
+#contenedor-resultado-final{
+    gap: 10px;          
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 130px;
+    padding-bottom: 150px;
+}
+
+
 /* --- ESCENA RANKING --- */
 #escena-clasificacion {
     display: none;
@@ -379,12 +429,11 @@ form {
     width: 100%;
     overflow: hidden;
 
+    padding-top: 20px;
+   
 }
 
-.titulo-ranking {
-    margin-bottom: 10px;
 
-}
 
 /* Contenedor de la tabla */
 .clasificacion {

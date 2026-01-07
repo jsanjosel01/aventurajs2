@@ -29,10 +29,10 @@ export const NOMBRE_INCORRECTO = "Sólo letras y espacios en blanco, tiene que e
 // MERCADO DE PRODUCTOS
 export const PRODUCTOS_MERCADO = [
     // Formato: Nombre, Imagen, Precio (céntimos), Rareza, Tipo, Bonus (objeto)
-    new Producto("Flecha", "flecha.png", 100, "rara", "arma", { ataque: 25 }),
+    new Producto("Flecha", "flecha.png", 200, "rara", "arma", { ataque: 25 }),
     new Producto("Hacha", "hacha.png", 90, "legendaria", "arma", { ataque: 40 }),
     new Producto("Escudo", "escudo.png", 100, "comun", "armadura", { defensa: 25 }),
-    new Producto("Casco", "casco.png", 10, "rara", "armadura", { defensa: 20 }),
+    new Producto("Casco", "casco.png", 80, "rara", "armadura", { defensa: 20 }),
     new Producto("Fruto de Dragón", "fruta.png", 50, "comun", "consumible", { vida: 20 }),
     new Producto("Poción", "pocion.png", 80, "legendaria", "consumible", { vida: 60 })
 ];
@@ -40,10 +40,10 @@ export const PRODUCTOS_MERCADO = [
 // LISTADO DE ENEMIGOS
 export const ENEMIGOS_DISPONIBLES = [
     // Enemigo: Nombre, Ataque, Imagen, Vida
-    new Enemigo("Fireworn", 4, "d3.jpg", 20),
-    new Enemigo("Sreaming Death", 7, "d4.jpg", 8),
+    new Enemigo("Fireworn", 4, "d3.jpg", 6),
+    new Enemigo("Sreaming Death", 5, "d4.jpg", 4),
     
     // Jefe: Nombre, Ataque, Imagen, Vida, Multiplicador
-    new Jefe("Death song", 10, "d2.jpg", 80, 1.5),
-    new Jefe("Hideous Zippleback", 15, "d8.jpg", 100, 2.0)
+    new Jefe("Death song", 7, "d2.jpg", 7, 1.5),
+    new Jefe("Hideous Zippleback", 7, "d8.jpg", 8, 2.0)
 ];
