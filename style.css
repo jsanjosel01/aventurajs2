@@ -145,7 +145,7 @@ form {
     background: #ffba53;
     transform: scale(1.05);
 }
-#btn-estado:hover:not(:disabled), #btn-ir-enemigos:hover:not(:disabled), #btn-ir-batallas:hover:not(:disabled), #btn-ir-combate:hover:not(:disabled){
+#btn-estado:hover:not(:disabled), #btn-ir-enemigos:hover:not(:disabled), #btn-ir-batallas:hover:not(:disabled), #btn-ir-combate:hover:not(:disabled), #btn-ir-ranking:hover:not(:disabled){
     background: #ffba53;
     transform: scale(1.05);
 }

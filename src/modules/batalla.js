@@ -10,27 +10,27 @@ export function batalla(jugador, enemigo) {
     let vidaEnemigo = enemigo.vida;
 
     while (vidaJugador > 0 && vidaEnemigo > 0) {
-        // Ataque del jugador
-        vidaEnemigo -= jugador.ataque;
+        // ATAQUE JUGADOR: Math.max(1,...) evita que el programa se bloquee si el ataque es 0
+        vidaEnemigo -= Math.max(1, jugador.ataque);
         if (vidaEnemigo <= 0) break;
 
-        // Ataque del enemigo (Fórmula: Vida = vida + defensa - ataque)
+        // ATAQUE ENEMIGO
         const dañoReal = enemigo.ataque - jugador.defensa;
         vidaJugador -= Math.max(0, dañoReal); 
     }
 
     if (vidaJugador > 0) {
-        // RECOMPENSAS
         let puntosGanados = 100 + enemigo.ataque;
         let monedasGanadas = 5;
 
-        // Si es jefe (comprobamos por tipo o propiedad)
         if (enemigo.tipo === 'Jefe') {
-            puntosGanados *= enemigo.multiplicadorDmg; // Usamos la propiedad directamente
+            puntosGanados *= enemigo.multiplicadorDmg;
             monedasGanadas = 10;
         }
 
-        // Actualizamos al jugador
+        puntosGanados = Math.floor(puntosGanados);
+
+        // Actualizamos las propiedades reales de tu jugador
         jugador.puntos += puntosGanados;
         jugador.dinero += monedasGanadas;
 

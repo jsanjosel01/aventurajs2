@@ -47,7 +47,7 @@ export function mostrarJugador(jugador) {
         <div class="stat-item">⚔️ Ataque: ${jugador.ataque}</div>
         <div class="stat-item">🛡️ Defensa: ${jugador.defensa}</div>
         <div class="stat-item">❤️ Vida: ${jugador.vida}</div>
-        <div class="stat-item">⭐ Puntos: ${jugador.puntos}</div>
+        <div class="stat-item">⭐ Puntos: ${Math.floor(jugador.puntos)}</div>
     `;
 
 }
@@ -150,7 +150,7 @@ export function mostrarEstadoActual(jugador) {
         <div class="stat-item">⚔️ Ataque Total: ${jugador.ataque}</div>
         <div class="stat-item">🛡️ Defensa Total: ${jugador.defensa}</div>
         <div class="stat-item">❤️ Vida Total: ${jugador.vida}</div>
-        <div class="stat-item">⭐ Puntos Totales: ${jugador.puntos}</div>
+        <div class="stat-item">⭐ Puntos Totales: ${Math.floor(jugador.puntos)}</div>
     `;
 
     // Cambiamos a la escena 4
@@ -226,7 +226,7 @@ export function irABatalla(jugador) {
     resultadoDiv.classList.remove("hidden");
     document.getElementById("recompensa-resultado").innerHTML = `
         <b>Ganador:</b> ${resultado.ganador} <br>
-        <b>Puntos obtenidos:</b> +${resultado.puntos} pts
+        <b>Puntos obtenidos:</b> +${Math.floor(resultado.puntos)}
     `;
 
     const btn = document.getElementById("btn-ir-combate");
@@ -313,7 +313,6 @@ export function irAClasificacion(jugador) {
     // Tabla 
     if (contenedor) {
         contenedor.innerHTML = `
-            
             <div class="tabla-contenedor">
                 <table class="ranking-table">
                     <thead>
@@ -327,7 +326,7 @@ export function irAClasificacion(jugador) {
                         ${rankings.map(reg => `
                             <tr>
                                 <td>${reg.nombre}</td>
-                                <td>${reg.puntos}</td>
+                                <td>${Math.floor(reg.puntos)}</td>
                                 <td>${reg.dinero}</td>
                             </tr>
                         `).join('')}
