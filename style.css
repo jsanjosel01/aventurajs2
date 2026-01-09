@@ -17,7 +17,7 @@
 
 /* --------------- ESTRUCTURA BASE --------------- */
 body {
-    background: var(--dark);
+    /* background: var(--dark); */
     color: var(--light);
     font-family: "MedievalSharp", cursive;
     min-height: 100vh;
@@ -28,6 +28,8 @@ body {
 
     height: 100vh;
     overflow: hidden; /* Evita scroll en la pág*/
+
+    background-image: url(pattern1.svg);
 }
 
 header {
