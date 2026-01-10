@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -25,7 +24,6 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-
     height: 100vh;
     overflow: hidden; /* Evita scroll en la pág*/
 
@@ -42,7 +40,6 @@ header {
     box-sizing: border-box;
 }
 
-
 main {
     height: 70vh; /* Requisito 70% */
     display: flex;
@@ -51,7 +48,6 @@ main {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-
     overflow-y: auto; /* PERMITE EL SCROLL AQUÍ */
     overflow-x: hidden;
     display: block;
@@ -70,64 +66,34 @@ main {
 
 
 /* --------------- FORMULARIO --------------- */
-#escena-formulario {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
-
-form {
-    flex-grow: 1; 
+#escena-formulario, form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-#escena-formulario {
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-    justify-content: space-between;
-}
-
-form {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    padding: 10px 20px;
+    height: 100%;
 }
 
 .inputContainer {
     width: 100%;
     max-width: 300px;
-    margin: 0 auto 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.inputContainer label {
-    font-size: 0.9rem;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
+    text-align: left;
 }
 
 .inputContainer input {
     width: 100%;
     padding: 6px 10px;
-    font-size: 1rem;
     border: 1px solid var(--dark);
-    box-sizing: border-box;
 }
 
 
 /* --------------- BOTONES --------------- */
-
-#btn-empezar,#btn-mercado, .botonComprar, #btn-estado, #btn-ir-enemigos, #btn-ir-batallas, #btn-ir-combate, #btn-ir-ranking, #btn-reiniciar{
-    font-family: "MedievalSharp", cursive;
+button, 
+#btn-empezar, #btn-mercado, .botonComprar, #btn-estado, 
+#btn-ir-enemigos, #btn-ir-batallas, #btn-ir-combate, 
+#btn-ir-ranking, #btn-reiniciar {
+    font-family: inherit;
     font-weight: bold;
     padding: 8px 10px;
     color: var(--dark);
@@ -138,48 +104,30 @@ form {
     transition: 0.2s;
     background: var(--accent);
     font-size: 1.2rem;
-    display: block;
     min-width: 100px;
 }
 
-
-#btn-empezar:hover:not(:disabled), #btn-mercado:hover:not(:disabled), .botonComprar:hover:not(:disabled), #btn-ir-rankin:hover:not(:disabled), #btn-reiniciar:hover:not(:disabled){
-    background: #ffba53;
-    transform: scale(1.05);
-}
-#btn-estado:hover:not(:disabled), #btn-ir-enemigos:hover:not(:disabled), #btn-ir-batallas:hover:not(:disabled), #btn-ir-combate:hover:not(:disabled), #btn-ir-ranking:hover:not(:disabled){
+button:hover:not(:disabled) {
     background: #ffba53;
     transform: scale(1.05);
 }
 
-#btn-empezar:disabled, #btn-mercado:disabled,.botonComprar:disabled, #btn-estado:disabled, #btn-ir-enemigos:disabled {
+button:disabled {
     background: #666;
     color: #999;
     cursor: not-allowed;
-    border-color: #444;
-}
-
-#btn-ir-batallas:disabled, #btn-ir-combate:disabled, #btn-ir-ranking:disabled, #btn-reiniciar:disabled{
-    background: #666;
-    color: #999;
-    cursor: not-allowed;
-    border-color: #444;
 }
 
 
 /* --------------- JUGADORA & ESTADO ACTUAL --------------- */
-
 #escena-jugadora, #escena-estado-actual {
     display: none;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    /* justify-content: flex-end; */
-
     justify-content: center;
     align-items: center;
     padding-top: 30px;
-
 }
 
 .protagonista {
@@ -188,7 +136,6 @@ form {
     align-items: center;
     gap: 10px;
     padding: 8px;
-    
 }
 
 #avatar-img, #avatar-img-final {
@@ -198,10 +145,8 @@ form {
     border-radius: 8px;
     border: 2px solid var(--secondary);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-
     gap: 8px;
     padding: 4px;
-    
     transition: transform 0.3s ease;
     cursor: pointer;
 }
@@ -219,7 +164,6 @@ form {
     gap: 10px;
     max-width: 300px;
     margin: 0 auto;
-
     max-width: 800px; 
     width: 95%;
     margin: 0 auto;
@@ -242,7 +186,6 @@ form {
 
 
 /* --- ESCENA MERCADO --- */
-
 #escena-mercado {
     padding-top: 20px; 
       
@@ -270,7 +213,6 @@ form {
     justify-content: flex-start; 
     gap: 10px;
     padding-top: 35px;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
@@ -278,7 +220,6 @@ form {
 .producto:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border-color: var(--accent);
-    
     transform: translateY(-8px); 
 }
 
@@ -296,9 +237,21 @@ form {
     color: #444;
 }
 
+/* Cambiar color, cuando se compra */
+.producto.comprado {
+    background-color: var(--secondary);
+    border: 2px solid var(--accent);
+    
+}
+
+.producto.comprado .botonComprar {
+    background: var(--danger);
+    color: var(--light);
+    border-color: var(--dark);
+}
+
 
 /* --- ESCENA ENEMIGOS --- */
-
 #escena-enemigos{
     padding-top: 20px; 
       
@@ -375,6 +328,7 @@ form {
 .animar-enemigo { animation: deIzquierda 1.2s ease-out forwards; }
 
 
+
 /* ANIMACIÓN MONEDAS */
 .moneda {
     position: fixed;
@@ -405,7 +359,6 @@ form {
 /* ESCENA RESULTADOS */
 #escena-resultados{
     padding-top: 20px; 
-      
 }
 
 #contenedor-resultado-final{
@@ -413,13 +366,11 @@ form {
     width: 100%;
     height: 100%;
     overflow: hidden;
-
     max-width: 800px; 
     margin: 0 auto;
     padding: 130px;
     padding-bottom: 150px;
 }
-
 
 /* --- ESCENA RANKING --- */
 #escena-clasificacion {
@@ -430,12 +381,9 @@ form {
     height: 100%;
     width: 100%;
     overflow: hidden;
-
     padding-top: 20px;
    
 }
-
-
 
 /* Contenedor de la tabla */
 .clasificacion {
@@ -447,7 +395,6 @@ form {
     max-height: 400px; 
     overflow-y: auto;
     padding-top: 0;
-
 }
 
 .ranking-table {
@@ -475,25 +422,11 @@ form {
     position: sticky;
     top: 0;
     z-index: 100; 
-    background-color: #f0950e;
-    color: var(--dark);
-    padding: 10px;
-    border: 2px solid var(--secondary);
-}
-
-/* Estilo de los encabezados */
-/* .ranking-table th {
     background-color: var(--accent);
     color: var(--dark);
     padding: 10px;
     border: 2px solid var(--secondary);
-    font-weight: bold;
-
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    
-} */
+}
 
 /* Celdas generales */
 .ranking-table td {
@@ -529,9 +462,7 @@ form {
 }
 
 
-
 /* --------------- FOOTER --------------- */
-
 #footer {
     height: 20vh;
     background-color: var(--primary);
@@ -558,8 +489,7 @@ form {
     left: 40px;         /* Ajusta la distancia desde la izquierda */
     top: 30%;           /* Lo centramos verticalmente */
     transform: translateY(-50%); /* Ajuste perfecto del centro vertical */
-    
-    width: 150px;        /* Tamaño de la imagen */
+    width: 150px;
     height: 90px;
     display: flex;
     justify-content: center; 
@@ -581,7 +511,7 @@ form {
     margin-top: 8px;    /* Mueve el número arriba/abajo para que encaje en el dibujo */
 }
 
-/* --- ANIMACIÓN --- */
+/* --- ANIMACIÓN SACO--- */
 .animacion-entrada {
     animation: deslizarDesdeIzquierda 1.2s ease-out forwards;
 }
@@ -605,7 +535,6 @@ form {
     margin: 5px;
     gap: 4px;
     border-radius: 10px;
-    
 }
 
 .item {
@@ -618,8 +547,6 @@ form {
     background: #f8f8f8;
     transition: all 0.3s ease;
     overflow: hidden;
-
-    
 }
 
 .item:hover {
@@ -635,150 +562,40 @@ form {
 
 
 /* --------------- RESPONSIVE --------------- */
-
-/* Dispositivos medianos (hasta 720px) */
 @media (max-width: 720px) {
-    body {
-        height: 100vh;
-        overflow: hidden;
+    #footer { 
+        height: auto; min-height: 180px; padding: 15px 0;
+        display: flex; flex-direction: column; overflow: visible;
+    }
+    
+    #monedero, #inventory-container, #footer p { 
+        position: static; transform: none; margin: 5px auto; 
+    }
+    
+    #mercado { grid-template-columns: repeat(2, 1fr); }
+
+    .grid-enemigos, .grid-batallas { 
+        flex-direction: column; align-items: center; gap: 20px; 
     }
 
-    main {
-        height: 70vh;
-        overflow-y: auto;
-        display: block;
-        padding: 10px;
+    /* Tarjetas de personajes */
+    #contenedor-enemigos .producto, #contenedor-batallas .producto {
+        width: 85%; max-width: 280px; height: auto; min-height: 170px;
     }
 
-    /* FOOTER: Organización vertical y visibilidad total */
-    #footer {
-        height: auto;
-        min-height: 180px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 0 15px 0;
-        overflow: visible !important; /* Evita que el texto desaparezca */
-    }
-
-    /* Monedero arriba */
-    #monedero {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin-bottom: 10px;
-        order: 1; /* Primero en el orden flex */
-    }
-
-    /* Inventario al medio */
-    #inventory-container {
-        position: relative;
-        margin: 0 auto;
-        order: 2; /* Segundo en el orden flex */
-    }
-
-    /* Párrafo al final */
-    #footer p {
-        position: relative; 
-        bottom: auto;       
-        width: 100%;
-        margin-top: 15px;   
-        font-size: 0.8rem;
-        color: var(--light);
-        display: block;
-        order: 3; /* Tercero en el orden flex */
-    }
-
-    /* MERCADO: 2 columnas */
-    #mercado {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 10px;
-    }
-
-    .grid-enemigos, .grid-batallas {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-    }
-
-    /* ENEMIGOS: Tamaño estándar */
-    #contenedor-enemigos .producto {
-        flex: none;
-        width: 85%;
-        max-width: 280px;
-        height: 250px;
-        margin: 0 auto;
-    }
-
-    #contenedor-enemigos .imgProducto {
-        width: 110px;
-        height: 110px;
-    }
-
-    /* BATALLAS: MÁS PEQUEÑO Y COMPACTO */
-    #contenedor-batallas .producto {
-        flex: none;
-        width: 80%;       /* Más estrecho */
-        max-width: 250px;
-        height: 170px;     /* Mucho más bajo */
-        padding: 10px;
-        margin: 0 auto;
-    }
-
-    #contenedor-batallas .imgProducto {
-        width: 75px;       /* Imagen reducida */
-        height: 75px;
-        min-height: 75px;
-        margin-bottom: 5px;
-    }
-
-    #stat-box, #stat-box-actualizado {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    #stat-box, #stat-box-actualizado { grid-template-columns: 1fr 1fr; }
 }
 
-/* Dispositivos pequeños (hasta 360px) */
+
 @media (max-width: 360px) {
     header h1 { font-size: 1.1rem; }
-
     #mercado { grid-template-columns: 1fr; }
-
     #monedero { width: 120px; height: 75px; }
-
-    /* Enemigos en 360px */
-    #contenedor-enemigos .producto {
-        width: 95%;
-        height: 220px;
+    
+    #inventory-container { 
+        display: grid; grid-template-columns: repeat(4, 1fr); 
     }
-
-    /* Batallas aún más pequeñas en 360px */
-    #contenedor-batallas .producto {
-        width: 90%;
-        height: 140px;
-        padding: 8px;
-    }
-
-    #contenedor-batallas .imgProducto {
-        width: 60px;
-        height: 60px;
-        min-height: 60px;
-    }
-
-    #inventory-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-    }
-
     .item { width: 45px; height: 45px; }
 
-    #footer p {
-        font-size: 0.7rem;
-        margin-top: 10px;
-        padding: 0 10px;
-    }
+    #footer p { font-size: 0.7rem; }
 }

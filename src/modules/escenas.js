@@ -115,14 +115,17 @@ export function mostrarMercado(jugador) {
                 jugador.inventario.push(producto);
                 
                 botonAccion.textContent = "Retirar";
-                botonAccion.classList.add("boton-retirar");
+                // botonAccion.classList.add("boton-retirar");
+                productoDiv.classList.add("comprado");
             } else {
                 
                 jugador.dinero += producto.precio;
                 jugador.inventario.splice(indiceEnInventario, 1);
                 
                 botonAccion.textContent = "Añadir";
-                botonAccion.classList.remove("boton-retirar");
+                // botonAccion.classList.remove("boton-retirar");
+                // productoDiv.classList.add("comprado");
+                productoDiv.classList.remove("comprado");
             }
             actualizarTextoDinero();
             actualizarInventario(casillasFooter, jugador.inventario);
