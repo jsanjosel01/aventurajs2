@@ -105,11 +105,13 @@ button,
     background: var(--accent);
     font-size: 1.2rem;
     min-width: 100px;
+    
 }
 
 button:hover:not(:disabled) {
     background: #ffba53;
     transform: scale(1.05);
+    color: var(--light) !important;
 }
 
 button:disabled {
