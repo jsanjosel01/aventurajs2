@@ -23,8 +23,9 @@ export const PUNTOS_BASE_VICTORIA = 100;
 export const MULTIPLICADOR_JEFE_DEFECTO = 1.25;
 
 // FORMULARIO - EXPRESIONES REGULARES 
-export const regexNombreJugador = /^[A-Z][A-Za-zÁÉÍÓÚáéíóúÑñ\s]{1,19}$/;
+export const regexNombreJugador = /^[A-Z][a-zA-Z\s]{0,19}$/;
 export const NOMBRE_INCORRECTO = "Sólo letras y espacios en blanco, tiene que empezar por mayúsculas. (Máx. 20 carácteres)";
+
 
 // MERCADO DE PRODUCTOS
 export const PRODUCTOS_MERCADO = [

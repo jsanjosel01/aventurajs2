@@ -87,6 +87,13 @@ main {
     border: 1px solid var(--dark);
 }
 
+/* Alertas */
+.inputContainer small {
+    color: red;
+    display: block;
+    margin-top: 5px;
+    min-height: 1em;
+}
 
 /* --------------- BOTONES --------------- */
 button, 
