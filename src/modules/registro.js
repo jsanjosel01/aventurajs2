@@ -1,8 +1,19 @@
+/**
+ * @file registro.js
+ * @description Módulo encargado de la validación del formulario de registro.
+ * Controla los requisitos de nombre y el reparto de puntos de estadísticas.
+ * @module Registro
+ */
 import { regexNombreJugador } from "../constants.js";
 
+
 /**
- * Valida el nombre del jugador comparándolo con la expresión regular.
- * @returns {boolean} True si es válido, False si no.
+ * Valida el nombre del jugador comparándolo con una expresión regular.
+ * * Requisitos:
+ * 1. Debe coincidir con la Regex (Empezar por mayúscula, máx 20 caracteres).
+ * 2. Proporciona feedback visual cambiando el color del borde y mostrando mensajes en el tag <small>.
+ * * @function validarNombre
+ * @returns {boolean} True si el nombre cumple con el formato, False en caso contrario.
  */
 export function validarNombre() {
     const inputNombre = document.getElementById("nombre-jugador");
@@ -25,11 +36,15 @@ export function validarNombre() {
 }
 
 /**
- * Valida que los puntos de estadísticas sean coherentes.
- * (Por ejemplo, que no sean negativos o que sumen un máximo).
- * @returns {boolean}
+ * Valida que los puntos de estadísticas (Ataque, Defensa, Vida) sean coherentes 
+ * con las reglas del juego.
+ * * Reglas de negocio:
+ * 1. Ataque y Defensa deben ser >= 0.
+ * 2. La Vida no puede ser inferior a 100.
+ * 3. La suma total no puede exceder los 110 puntos (10 puntos extra sobre la vida base).
+ * * @function validarCantidadTotal
+ * @returns {boolean} True si las estadísticas son legales.
  */
-
 export function validarCantidadTotal() {
     const inputAtaque = document.getElementById("ataque");
     const inputDefensa = document.getElementById("defensa");
@@ -60,7 +75,11 @@ export function validarCantidadTotal() {
 }
 
 /**
- * Comprueba todo el formulario para habilitar el botón "Empezar"
+ * Realiza una comprobación integral del formulario y gestiona el estado del botón de inicio.
+ * Invoca las validaciones de nombre y estadísticas para habilitar o deshabilitar 
+ * el elemento con ID "btn-empezar".
+ * * @function checkFullForm
+ * @returns {boolean} Resultado global de la validación del formulario.
  */
 export function checkFullForm() {
     const esNombreValido = validarNombre();

@@ -1,14 +1,33 @@
+/**
+ * @file main.js
+ * @description Punto de entrada principal del juego "Aventura en el Reino de JS".
+ * Este módulo orquestra la validación del formulario inicial, la creación del jugador
+ * y la navegación entre las diferentes escenas (Mercado, Estado, Enemigos y Batalla).
+ */
 import { mostrarEscena, mostrarJugador, mostrarMercado, mostrarEstadoActual, mostrarEscenaEnemigos } from "./modules/escenas.js";
 import { Jugador } from "./modules/jugador.js";
 // import { checkFullForm } from "./modules/registro.js";
 import { irABatalla } from "./modules/escenas.js";
-
 import { regexNombreJugador} from "./constants.js"; 
 
-
+/** * Referencia global al objeto del jugador creado tras el registro.
+ * @type {Jugador|null} 
+ */
 let jugadorPrincipal = null;
 
 // FUNCIÓN PARA VALIDAR EL FORMULARIO. ES EL PANEL DE CONTROL AL JUEGO
+
+/**
+ * Valida de forma integral el formulario de registro del jugador.
+ * Actúa como el panel de control antes de permitir el acceso al juego.
+ * * * Comprobaciones realizadas:
+ * 1. Nombre: Debe cumplir con el formato {@link regexNombreJugador}.
+ * 2. Vida: El valor mínimo obligatorio es 100.
+ * 3. Reparto de puntos: La suma de ataque, defensa y vida no puede exceder 110.
+ * 4. Valores negativos: No se permite ataque o defensa inferiores a 0.
+ * * @function checkFullForm
+ * @returns {boolean} True si todos los campos son válidos y el jugador puede crearse.
+ */
 function checkFullForm() {
     // Obtener los inputs
     const inputNombre = document.getElementById("nombre-jugador");
@@ -56,6 +75,11 @@ function checkFullForm() {
 }
 
 // ESCENA 1: FORMULARIO
+
+/**
+ * Evento para iniciar el juego. Valida el formulario, instancia al jugador principal
+ * y muestra la tarjeta de personaje inicial.
+ */
 document.getElementById("btn-empezar").addEventListener("click", () => {
     
     if (checkFullForm()) { 
@@ -77,6 +101,10 @@ document.getElementById("btn-empezar").addEventListener("click", () => {
 
 
 // ESCENA 3: MERCADO
+
+/**
+ * Evento para acceder al mercado negro. Genera los productos y gestiona el monedero.
+ */
 document.getElementById("btn-mercado").addEventListener("click", () => {
     
     // Cambiar a la escena 3
@@ -92,16 +120,29 @@ document.getElementById("btn-mercado").addEventListener("click", () => {
 });
 
 // ESCENA 4: ESTADO ACTUAL
+
+/**
+ * Evento para consultar las estadísticas actuales del jugador, incluyendo bonus de objetos.
+ */
 document.getElementById("btn-estado").addEventListener("click", () => {
     mostrarEstadoActual(jugadorPrincipal);
 });
 
 // ESCENA 5: ENEMIGOS
+
+/**
+ * Evento para mostrar el bestiario de enemigos disponibles en el reino.
+ */
 document.getElementById('btn-ir-enemigos').addEventListener('click', () => {
     mostrarEscenaEnemigos();
 });
 
 // ESCENA 6: BATALLAS
+
+/**
+ * Evento para iniciar la secuencia de combate final.
+ */
 document.getElementById('btn-ir-batallas').addEventListener('click', () => {
     irABatalla(jugadorPrincipal);
 });
+

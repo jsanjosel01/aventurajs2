@@ -1,13 +1,18 @@
-
+/**
+ * @file constants.js
+ * @description Configuración global, constantes de balance y base de datos de objetos y enemigos del juego.
+ * @module Constants
+ */
 import { Producto } from "./modules/producto.js";
 import { Enemigo } from "./modules/enemigo.js";
 import { Jefe } from "./modules/jefe.js";
 
-/**
- * Configuración global y base de datos del juego.
- */
+
 
 // CONFIGURACIÓN MONEDA
+/** * Configurador de formato para moneda local (Euro).
+ * @type {Intl.NumberFormat} 
+ */
 export const EUR = new Intl.NumberFormat('es-ES', {
     style: 'currency',
     currency: 'EUR'
@@ -23,11 +28,21 @@ export const PUNTOS_BASE_VICTORIA = 100;
 export const MULTIPLICADOR_JEFE_DEFECTO = 1.25;
 
 // FORMULARIO - EXPRESIONES REGULARES 
+
+/** * Expresión regular para validar el nombre del jugador.
+ * Debe empezar con mayúscula y tener entre 1 y 20 caracteres alfabéticos o espacios.
+ * @type {RegExp} 
+ */
 export const regexNombreJugador = /^[A-Z][a-zA-Z\s]{0,19}$/;
 export const NOMBRE_INCORRECTO = "Sólo letras y espacios en blanco, tiene que empezar por mayúsculas. (Máx. 20 carácteres)";
 
 
 // MERCADO DE PRODUCTOS
+
+/** * Base de datos de productos disponibles en el mercado.
+ * Contiene armas, armaduras y consumibles con sus respectivos bonificadores.
+ * @type {Array<Producto>} 
+ */
 export const PRODUCTOS_MERCADO = [
     // Formato: Nombre, Imagen, Precio (céntimos), Rareza, Tipo, Bonus (objeto)
     new Producto("Flecha", "flecha.png", 200, "rara", "arma", { ataque: 25 }),
@@ -39,6 +54,10 @@ export const PRODUCTOS_MERCADO = [
 ];
 
 // LISTADO DE ENEMIGOS
+/** * Listado de oponentes para la fase de batalla.
+ * Incluye enemigos estándar y jefes con multiplicadores de dificultad.
+ * @type {Array<Enemigo|Jefe>} 
+ */
 export const ENEMIGOS_DISPONIBLES = [
     // Enemigo: Nombre, Ataque, Imagen, Vida
     new Enemigo("Fireworn", 4, "d3.jpg", 6),

@@ -1,15 +1,23 @@
+/**
+ * @file escenas.js
+ * @description Módulo encargado de la navegación entre pantallas, renderizado de la interfaz 
+ * y gestión visual del progreso del jugador (mercado, batallas y ranking).
+ * @module Escenas
+ */
 import { rarezaRandom, descuentoRandom, aplicarDescuentoPorRareza, actualizarInventario } from "./mercado.js";
 
 import { ENEMIGOS_DISPONIBLES } from "../constants.js";
 import { batalla } from "./batalla.js";
 import { calcularNivel } from "./ranking.js";
 
-
+/** @type {number} Índice que rastrea el progreso actual en la lista de enemigos */
 // Inicar las batallas a 0
 let indiceBatallaActual = 0;
 
 /**
- * Gestiona el cambio de escenas ocultando todas y mostrando la deseada.
+ * Gestiona el cambio de escenas ocultando todos los contenedores con la clase '.scene' 
+ * y mostrando el ID proporcionado.
+ * @function mostrarEscena
  * @param {string} idEscena - El ID del contenedor HTML de la escena a mostrar.
  */
 export function mostrarEscena(idEscena) {
@@ -27,8 +35,9 @@ export function mostrarEscena(idEscena) {
 }
 
 /**
- * Renderiza la tarjeta informativa del jugador con sus estadísticas iniciales.
- * @param {Jugador} jugador - Instancia de la clase Jugador con los datos.
+ * Renderiza la tarjeta informativa inicial del jugador.
+ * @function mostrarJugador
+ * @param {Object} jugador - Instancia del jugador con datos de avatar, nombre y estadísticas.
  */
 
 // Funcion Mostrar jugador
@@ -51,8 +60,14 @@ export function mostrarJugador(jugador) {
     `;
 
 }
-
 // ESCENA MERCADO
+
+/**
+ * Genera y muestra la interfaz del mercado con productos aleatorios y lógica de compra/venta.
+ * @function mostrarMercado
+ * @param {Object} jugador - El objeto del jugador para gestionar su dinero e inventario.
+ */
+
 // Funcion para mostrar el mercado
 export function mostrarMercado(jugador) {
     const mercadoDiv = document.getElementById("mercado");
@@ -136,6 +151,11 @@ export function mostrarMercado(jugador) {
     });
 }
 
+/**
+ * Muestra el estado final y actualizado del jugador antes de las batallas.
+ * @function mostrarEstadoActual
+ * @param {Object} jugador - El objeto del jugador con estadísticas acumuladas.
+ */
 
 // Función para mostrar el estado actual del jugador
 export function mostrarEstadoActual(jugador) {
@@ -159,6 +179,11 @@ export function mostrarEstadoActual(jugador) {
     // Cambiamos a la escena 4
     mostrarEscena("escena-estado-actual");
 }
+
+/**
+ * Renderiza la galería de enemigos disponibles configurados en las constantes.
+ * @function mostrarEscenaEnemigos
+ */
 
 // Función para mostrar los enemigos con sus estadísticas
 export function mostrarEscenaEnemigos() {
@@ -191,7 +216,15 @@ window.iniciarCombate = (nombre) => {
 };
 
 
-// ESCENA 6
+// ESCENA 6 - IR A BATALLAS
+
+/**
+ * Ejecuta la lógica de combate visual y funcional entre el jugador y el enemigo actual.
+ * Incluye animaciones de monedas y gestión de flujo de combate múltiple.
+ * @function irABatalla
+ * @param {Object} jugador - El objeto del jugador actual.
+ */
+
 export function irABatalla(jugador) {
     const enemigo = ENEMIGOS_DISPONIBLES[indiceBatallaActual];
     const resultado = batalla(jugador, enemigo);
@@ -251,7 +284,13 @@ export function irABatalla(jugador) {
     mostrarEscena("escena-batallas");
 }
 
-// ESCENA 7
+// ESCENA 7 - RESULTADOS
+
+/**
+ * Muestra la pantalla de resultados finales, calculando el rango del jugador y sus puntos totales.
+ * @function irAResultadoFinal
+ * @param {Object} jugador - El objeto del jugador con los puntos y dinero finales.
+ */
 export function irAResultadoFinal(jugador) {
     const contenedor = document.getElementById("contenedor-resultado-final");
     
@@ -280,7 +319,13 @@ export function irAResultadoFinal(jugador) {
     mostrarEscena("escena-resultados");
 }
 
-// ESCENA 8
+// ESCENA 8 - RANKING
+
+/**
+ * Gestiona el ranking histórico guardado en LocalStorage y muestra la tabla de clasificación.
+ * @function irAClasificacion
+ * @param {Object} jugador - El objeto del jugador para ser registrado en el ranking.
+ */
 export function irAClasificacion(jugador) {
     const contenedor = document.getElementById("contenedor-clasificacion");
     
