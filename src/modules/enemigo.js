@@ -1,9 +1,9 @@
-import { VIDA_MAX_ENEMIGO } from "../constants.js";
-
 /**
  * @file enemigo.js
  * @description Define la clase base para los oponentes del juego.
  */
+import { VIDA_MAX_ENEMIGO } from "../constants.js";
+
 
 /**
  * Clase que representa a un enemigo estándar.
