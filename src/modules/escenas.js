@@ -10,8 +10,10 @@ import { ENEMIGOS_DISPONIBLES } from "../constants.js";
 import { batalla } from "./batalla.js";
 import { calcularNivel } from "./ranking.js";
 
+
 /** @type {number} Índice que rastrea el progreso actual en la lista de enemigos */
 // Inicar las batallas a 0
+
 let indiceBatallaActual = 0;
 
 /**
@@ -382,6 +384,18 @@ export function irAClasificacion(jugador) {
                 </table>
             </div>
         `;
+    }
+
+    // Botón para mostrar ranking por consola
+    const btnConsola = document.getElementById("btn-ranking-consola");
+    if (btnConsola) {
+        btnConsola.onclick = () => {
+            // Recuperamos los datos actualizados de LocalStorage
+            const rankingHistorico = JSON.parse(localStorage.getItem("ranking_jugadores")) || [];
+            
+            console.log("Ranking de jugadores: ");
+            console.table(rankingHistorico); 
+        };
     }
 
     // Botón reiniciar juego
