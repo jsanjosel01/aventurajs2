@@ -112,7 +112,7 @@ export function mostrarMercado(jugador) {
         botonAccion.innerHTML = "Añadir";
         botonAccion.classList.add("botonComprar");
 
-        botonAccion.addEventListener("click", () => {
+        botonAccion.addEventListener("click", (e) => {
             // Buscamos si el producto está en el inventario
             const indiceEnInventario = jugador.inventario.findIndex(p => p.nombre === producto.nombre);
 
@@ -128,6 +128,9 @@ export function mostrarMercado(jugador) {
                     return;
                 }
 
+                // ANIMACIÓN CARRITO: Solo si la compra es exitosa
+                dispararAnimacionCarrito(e);
+
                 jugador.dinero -= producto.precio;
                 jugador.inventario.push(producto);
                 
@@ -136,12 +139,11 @@ export function mostrarMercado(jugador) {
                 productoDiv.classList.add("comprado");
             } else {
                 
+                // Devolver producto
                 jugador.dinero += producto.precio;
                 jugador.inventario.splice(indiceEnInventario, 1);
                 
                 botonAccion.textContent = "Añadir";
-                // botonAccion.classList.remove("boton-retirar");
-                // productoDiv.classList.add("comprado");
                 productoDiv.classList.remove("comprado");
             }
             actualizarTextoDinero();
@@ -152,6 +154,25 @@ export function mostrarMercado(jugador) {
         mercadoDiv.appendChild(productoDiv);
     });
 }
+
+// Funcion para Animación carrito
+function dispararAnimacionCarrito(evento) {
+    const icono = document.createElement("div");
+    icono.innerText = "🛒";
+    icono.className = "animacion-carrito";
+    
+    // Posicionar el icono donde se hizo clic
+    icono.style.left = `${evento.pageX}px`;
+    icono.style.top = `${evento.pageY}px`;
+    
+    document.body.appendChild(icono);
+    
+    // Eliminar el elemento del DOM tras terminar la animación
+    setTimeout(() => {
+        icono.remove();
+    }, 2000);
+}
+
 
 /**
  * Muestra el estado final y actualizado del jugador antes de las batallas.

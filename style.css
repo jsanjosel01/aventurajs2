@@ -259,6 +259,25 @@ button:disabled {
     border-color: var(--dark);
 }
 
+/* --- ANIMACIÓN CARRITO --- */
+.animacion-carrito {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: 1000;
+    animation: subirYDesaparecer 1.5s ease-out forwards;
+}
+
+@keyframes subirYDesaparecer {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
 
 /* --- ESCENA ENEMIGOS --- */
 #escena-enemigos{
