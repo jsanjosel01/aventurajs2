@@ -89,11 +89,18 @@ main {
 
 /* Alertas */
 .inputContainer small {
-    color: red;
+    color:  var(--light);
+    background-color:rgb(241, 16, 16);
+    /* font-weight: bold; */
     display: block;
     margin-top: 5px;
     min-height: 1em;
 }
+/* Ocultar el fondo si no hay mensaje */
+.inputContainer small:empty {
+    background-color: transparent;
+}
+
 
 /* --------------- BOTONES --------------- */
 button, 
