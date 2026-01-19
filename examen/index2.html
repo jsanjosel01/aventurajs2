@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <!-- <link rel='stylesheet' href='style.css'> -->
+    <!-- <script type="module" src="src/main.js"></script> -->
+    <script type="module" src="./script.js"></script> 
+    <!-- <script src='script.js' defer></script> -->
+    <title>aventurajs2</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+
+
+<body>
+    <header>
+    <h1 id="title">Almacén de Objetos</h1>
+    </header>
+
+   <main>
+
+    <!-- Formulario -->
+        <div class="scene" id="escena-formulario">
+
+            <form action="form">
+                <div class="inputContainer">
+                    <label>Nombre:</label>
+                    <input id="nombre-objeto" type="text">
+                    <small></small>
+                </div>
+
+                <div class="inputContainer">
+                    <label>Precio:</label>
+                    <input id="precio-productos" type="number" step="1" minlength="0" maxlength="99">
+                    <small></small>
+                </div>
+
+                
+                <select id="rareza" type="select">
+                    
+                    <option> Común</option> 
+                    <option> Raro</option>
+                    <option> Épico</option>
+                </select>
+
+
+                <select id="tipo" type="select">
+                    <option> Armadura</option> 
+                    <option> Arma</option>
+                    <option> Consumible</option>
+                </select>
+
+
+                <div class="inputContainer">
+                    <label>Bonus:</label>
+                    <input id="bonus" type="text" step="+" minlength="1" maxlength="3">
+                    <small></small>
+                </div>
+
+                <div class="inputContainer">
+                    <label>Imagen:</label>
+                    <input id="imagenes" type="file">
+                    <small></small>
+                </div>
+            </form>
+
+            <div class="btn">
+                <button id="btn-añadir">Añadir</button>
+            </div>
+        </div>
+
+
+
+        <!-- Almacen -->
+        <div class="almacen">
+            
+            <div id="contenedor-almacen" class="almacen">
+                </div>
+
+            <div class="btn">
+                <button id="btn-almacen">Mostrar almacen</button>
+                
+            </div>
+        </div>
+
+
+
+        <footer id="footer"></footer>
+
+
+</body>
+</html>

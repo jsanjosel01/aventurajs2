@@ -11,6 +11,7 @@ import { batalla } from "./batalla.js";
 import { calcularNivel } from "./ranking.js";
 
 
+
 /** @type {number} Índice que rastrea el progreso actual en la lista de enemigos */
 // Inicar las batallas a 0
 
@@ -357,10 +358,12 @@ export function irAClasificacion(jugador) {
         nombre: jugador.nombre,
         puntos: jugador.puntos,
         dinero: jugador.dinero
+        // objetos: jugador.inventario.map(item => item.nombre)
     };
 
     // Recuperar ranking del LocalStorage
     let rankings = JSON.parse(localStorage.getItem("ranking_jugadores")) || [];
+    
     
     // Si está vacío, rellenamos con Enemigos para tener scroll
     if (rankings.length === 0) {
@@ -368,7 +371,8 @@ export function irAClasificacion(jugador) {
             rankings.push({ 
                 nombre: `Enemigo`, 
                 puntos: 50 * i, 
-                dinero: i * 5 
+                dinero: i * 5
+                // objetos: [] 
             });
         }
     }
@@ -381,6 +385,7 @@ export function irAClasificacion(jugador) {
     
     localStorage.setItem("ranking_jugadores", JSON.stringify(rankings));
 
+
     // Tabla 
     if (contenedor) {
         contenedor.innerHTML = `
@@ -391,6 +396,7 @@ export function irAClasificacion(jugador) {
                             <th>Nombre</th>
                             <th>Puntos</th>
                             <th>Dinero</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -399,6 +405,7 @@ export function irAClasificacion(jugador) {
                                 <td>${reg.nombre}</td>
                                 <td>${Math.floor(reg.puntos)}</td>
                                 <td>${reg.dinero}</td>
+                                
                             </tr>
                         `).join('')}
                     </tbody>
@@ -407,13 +414,19 @@ export function irAClasificacion(jugador) {
         `;
     }
 
+    // <td>${reg.objetos && reg.objetos.length > 0 
+    //     ? reg.objetos.join(', ') 
+    //     : ''}</td>
+
+    
+
     // Botón para mostrar ranking por consola
     const btnConsola = document.getElementById("btn-ranking-consola");
     if (btnConsola) {
         btnConsola.onclick = () => {
             // Recuperamos los datos actualizados de LocalStorage
             const rankingHistorico = JSON.parse(localStorage.getItem("ranking_jugadores")) || [];
-            
+
             console.log("Ranking de jugadores: ");
             console.table(rankingHistorico); 
         };

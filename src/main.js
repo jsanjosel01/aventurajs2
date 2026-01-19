@@ -9,6 +9,7 @@ import { Jugador } from "./modules/jugador.js";
 // import { checkFullForm } from "./modules/registro.js";
 import { irABatalla } from "./modules/escenas.js";
 import { regexNombreJugador} from "./constants.js"; 
+// import { guardarNombreEnCookie} from "./modules/registro.js";
 
 /** * Referencia global al objeto del jugador creado tras el registro.
  * @type {Jugador|null} 
@@ -31,9 +32,13 @@ let jugadorPrincipal = null;
 function checkFullForm() {
     // Obtener los inputs
     const inputNombre = document.getElementById("nombre-jugador");
+    
     const inputAtaque = document.getElementById("ataque");
     const inputDefensa = document.getElementById("defensa");
     const inputVida = document.getElementById("vida");
+
+    // const inputPass = document.getElementById("password"); //CONTRASEÑA
+    // const inputConfirmPass = document.getElementById("confirm-password");
 
     // Limpiar todos los mensajes previos
     document.querySelectorAll(".inputContainer small").forEach(s => s.textContent = "");
@@ -45,6 +50,18 @@ function checkFullForm() {
         inputNombre.nextElementSibling.textContent = "Empieza con Mayúscula (máx. 20 chars).";
         esValido = false;
     }
+
+    // VALIDACIÓN CONTRASEÑA
+    // if (inputPass.value.length < 6) {
+    //     inputPass.nextElementSibling.textContent = "Mínimo 6 caracteres.";
+    //     esValido = false;
+    // }
+
+    // // VALIDACIÓN COINCIDENCIA DE CONTRASEÑA
+    // if (inputPass.value !== inputConfirmPass.value) {
+    //     inputConfirmPass.nextElementSibling.textContent = "Las contraseñas no coinciden.";
+    //     esValido = false;
+    // }
 
     // Convertir a números para lógica
     const atk = parseInt(inputAtaque.value) || 0;
@@ -74,6 +91,8 @@ function checkFullForm() {
     return esValido;
 }
 
+
+
 // ESCENA 1: FORMULARIO
 
 /**
@@ -84,11 +103,15 @@ document.getElementById("btn-empezar").addEventListener("click", () => {
     
     if (checkFullForm()) { 
         const nombre = document.getElementById("nombre-jugador").value;
+        // const password = document.getElementById("password").value; // CONTRASEÑA
         const ataque = parseInt(document.getElementById("ataque").value) || 0;
         const defensa = parseInt(document.getElementById("defensa").value) || 0;
         const vida = parseInt(document.getElementById("vida").value) || 100;
 
-        // jugador principal
+
+        // guardarNombreEnCookie(); //COOKIE
+
+        // CREAR jugador principal
         jugadorPrincipal = new Jugador(nombre, ataque, defensa, vida);
 
         // Renderizar tarjeta
@@ -146,3 +169,14 @@ document.getElementById('btn-ir-batallas').addEventListener('click', () => {
     irABatalla(jugadorPrincipal);
 });
 
+
+// ESCENA 0: BIENVENIDA
+// document.addEventListener("DOMContentLoaded", () => {
+//     // Iniciamos en la bienvenida
+//     mostrarEscena("escena-bienvenida");
+    
+// });
+
+// document.getElementById("btn-ir-al-registro").addEventListener("click", () => {
+//     mostrarEscena("escena-formulario"); 
+// });

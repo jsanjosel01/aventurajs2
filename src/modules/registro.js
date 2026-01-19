@@ -7,6 +7,7 @@
 import { regexNombreJugador } from "../constants.js";
 
 
+
 /**
  * Valida el nombre del jugador comparándolo con una expresión regular.
  * * Requisitos:
@@ -92,3 +93,33 @@ export function checkFullForm() {
 
     return esNombreValido && sonStatsValidos;
 }
+
+
+// COOKIE
+
+// /**
+//  * Guarda una cookie en el navegador.
+//  * @param {string} nombre - El nombre de la cookie.
+//  * @param {string} valor - El valor a guardar.
+//  * @param {number} dias - Días hasta que expire.
+//  */
+// function establecerCookie(nombre, valor, dias) {
+//     const d = new Date();
+//     d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000));
+//     let expires = "expires=" + d.toUTCString();
+//     document.cookie = nombre + "=" + valor + ";" + expires + ";path=/";
+// }
+
+// /**
+//  * Guarda el nombre actual del input en una cookie.
+//  * Se debe llamar cuando el usuario pulse el botón de empezar.
+//  */
+// export function guardarNombreEnCookie() {
+//     const inputNombre = document.getElementById("nombre-jugador");
+//     const nombre = inputNombre.value.trim();
+    
+//     if (nombre) {
+//         establecerCookie("nombreJugador", nombre, 7); // Guardamos por 7 días
+//         console.log("Cookie guardada: " + nombre);
+//     }
+// }
