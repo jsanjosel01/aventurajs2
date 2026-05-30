@@ -34,6 +34,7 @@ export class Jugador {
         this.avatar = AVATAR_JUGADOR;
     }
 
+
     /**
      * Añade un producto al inventario realizando una copia profunda, CLONARLOS.
      * @method añadirProducto
