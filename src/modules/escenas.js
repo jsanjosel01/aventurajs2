@@ -5,6 +5,7 @@
  * @module Escenas
  */
 import { rarezaRandom, descuentoRandom, aplicarDescuentoPorRareza, actualizarInventario } from "./mercado.js";
+import { cargarProductosUsuario } from "./mercadonegro.js";
 
 import { ENEMIGOS_DISPONIBLES } from "../constants.js";
 import { batalla } from "./batalla.js";
@@ -95,7 +96,13 @@ export function mostrarMercado(jugador) {
     const descuentoAleatorio = descuentoRandom();
     const mercadoConDescuento = aplicarDescuentoPorRareza(rarezaAleatoria, descuentoAleatorio);
 
-    mercadoConDescuento.forEach(producto => {
+    // Cargar productos del usuario desde mercadonegro.js
+    const productosUsuario = cargarProductosUsuario();
+
+    // Unir productos del mercado base + productos del usuario
+    const mercadoFinal = [...mercadoConDescuento, ...productosUsuario];
+
+    mercadoFinal.forEach(producto => {
         const productoDiv = document.createElement("div");
         productoDiv.classList.add("producto");
 

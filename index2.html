@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Gestion de objetos - Aventura JS</title>
+</head>
+
+<body>
+
+    <h1>Creación de nuevos objetos</h1>
+
+    <form id="formulario-item">
+
+        <!-- Nombre -->
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required minlength="3"
+            pattern="([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)(\s[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)*"
+            title="Debe empezar por mayúscula seguida de minúsculas. Mínimo 3 caracteres. Solo letras.">
+
+        <!-- Precio -->
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" name="precio" required min="1" max="99" step="1"
+            title="Solo números enteros positivos menores de 99">
+
+        <!-- Rareza -->
+        <label for="rareza">Rareza</label>
+        <select id="rareza" name="rareza" required>
+            <option value="" disabled selected>-- Selecciona rareza --</option>
+            <option value="Común">Común</option>
+            <option value="Raro">Raro</option>
+            <option value="Épico">Épico</option>
+        </select>
+
+        <!-- Tipo -->
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo" required>
+            <option value="" disabled selected>-- Selecciona tipo --</option>
+            <option value="Armadura">Armadura</option>
+            <option value="Arma">Arma</option>
+            <option value="Consumible">Consumible</option>
+        </select>
+
+        <!-- Bonus -->
+        <label for="bonus">Bonus</label>
+        <input type="text" id="bonus" name="bonus" required pattern="\+\d{1,3}"
+            title="Debe comenzar por + seguido de 1 a 3 dígitos." placeholder="Ej: +12">
+
+        <!-- Imagen -->
+        <label for="imagen">Imagen</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+
+
+        <button type="submit">Guardar objeto</button>
+
+    </form>
+
+
+    <a href="index.html"><button type="button">Ir al juego</button></a>
+
+    <script src="formulario.js"></script>
+
+</body>
+
+</html>
